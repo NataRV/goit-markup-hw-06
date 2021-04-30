@@ -212,6 +212,16 @@ ul {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
 .current::after {
   position: absolute;
   right: 0;
@@ -333,6 +343,7 @@ ul {
   fill: var(--black-color);
 }
 
+
 .modal-form{
   display: flex;
   flex-direction: column;
@@ -359,19 +370,17 @@ position: relative;
   border-color: var(--accent-color);
 }
 .modal-form-input:focus + .modal-form-icon{
-  background-color: var(--accent-color);
-  /** per icon background color cambiare per fill**/
+  fill: var(--accent-color);
 }
 .modal-form-icon{
   width: 18px;
   height: 18px;
-  background-color: teal;
   display: block;
   position: absolute;
   top: 50%;
   left: 12px;
   transform: translateY(-50%);
-  transition: background-color 250ms var(--timing-function)/** cambiare per fill**/;
+  transition: fill 250ms var(--timing-function);
 }
 .modal-form-message{
   font-size: 14px;
@@ -393,6 +402,83 @@ color: rgba(117, 117, 117, 0.5);
 .modal-form-message:focus{
 outline: none;
 border-color: var(--accent-color);
+}
+.modal-form-check-policy:checked + .modal-form-label-policy::before{
+  background-image: url(../images/main/check-icon.svg);
+  background-color: var(--accent-color);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.modal-form-check-policy:focus + .modal-form-label-policy::before{
+  outline: 1 px soli var(--accent-color);
+}
+.modal-form-label-policy::before{
+  display: inline-block;
+  content: "";
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--primary-text-color);
+  margin-right: 7px;
+  border-radius: 3px;
+  transition: background-color 250ms var(--timing-function), fill 250ms var(--timing-function), box-shadow 250ms var(--timing-function), border 250ms var(--timing-function);
+  cursor: pointer;
+}
+.modal-form-label-policy{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+letter-spacing: 0.03em;
+color: #757575;
+}
+
+.modal-form-btn {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+  letter-spacing: 0.06em;
+  color: var(--white-color);
+  background-color: var(--accent-color);
+  border-radius: 4px;
+  min-width: 200px;
+  height: 50px;
+  padding: 10px 32px;
+  border: 0;
+  text-align: center;
+
+  transition: background-color 250ms var(--timing-function);
+  cursor: pointer;
+  align-self: center;
+}
+
+.modal-form-btn:hover,
+.modal-form-btn:focus {
+  background-color: var(--accent-color);
+}
+.agreement-link{
+font-size: 14px;
+line-height: 1.714;
+letter-spacing: 0.03em;
+text-decoration-line: underline;
+color: var(--accent-color);
+}
+.modal-form-input-label{
+font-size: 12px;
+line-height: 14px;
+letter-spacing: 0.01em;
+color: var(--secondary-text-color);
+}
+.modal-form-title{
+font-weight: bold;
+font-size: 20px;
+line-height: 1.15;
+text-align: center;
+letter-spacing: 0.03em;
+color: var(--primary-text-color);
 }
 /* ========== END HERO ========== */
 
